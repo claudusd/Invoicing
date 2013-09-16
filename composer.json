@@ -1,7 +1,7 @@
 {
     "name": "claudusd/invoicing",
     "type": "library",
-    "description": "A invoicing PHP 5.4 library.",
+    "description": "A invoicing PHP library.",
     "keywords": ["invoicing"],
     "license": "MIT",
     "authors": [

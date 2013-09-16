@@ -11,5 +11,7 @@ abstract class AbstractProvider
      * 
      * @return Invoicing 
      */
-    public function getInvoicing(CustomerInterface $customer, SellerInterface $seller, ProductSet $productSet);
+    abstract public function getInvoicing(CustomerInterface $customer, SellerInterface $seller, ProductSet $productSet);
+
+    abstract public function getName();
 }

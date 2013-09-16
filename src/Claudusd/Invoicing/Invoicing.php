@@ -3,6 +3,10 @@
 namespace Claudusd\Invoicing;
 
 use Claudusd\Invoicing\InvoicingInterface;
+use Claudusd\Invoicing\Model\CustomerInterface;
+use Claudusd\Invoicing\Model\ProductSet;
+use Claudusd\Invoicing\Model\SellerInterface;
+use Claudusd\Invoicing\Provider\AbstractProvider;
 
 /**
  * @author Claude Dioudonnat <claude.dioudonnat@gmail.com>
@@ -34,11 +38,16 @@ class Invoicing implements InvoicingInterface
         return $this;
     }
 
-    public function registerProvider(ProviderInterface $provider)
+    public function registerProvider(AbstractProvider $provider)
     {
         if (null !== $provider) {
             $this->providers[$provider->getName()] = $provider;
         }
         return $this;
+    }
+
+    public function getProviders()
+    {
+        return $this->providers;
     }
 }

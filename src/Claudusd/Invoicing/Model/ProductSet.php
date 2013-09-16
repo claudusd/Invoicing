@@ -17,7 +17,7 @@ class ProductSet implements \IteratorAggregate, \Countable
      */
     public function __construct()
     {
-        $this->$array = array();
+        $this->array = array();
     }
 
     /**
@@ -50,7 +50,7 @@ class ProductSet implements \IteratorAggregate, \Countable
             }
 
             if($amount < $this->array[$product->getReference()]->getAmount()) {
-                $this->array[$product->getReference()]->setAmount($amount);
+                $this->array[$product->getReference()]->setAmount(-$amount);
                 return true;
             } elseif ($amount == $this->array[$product->getReference()]->getAmount()) {
                 return $this->removeProductCompletely($product);
@@ -77,6 +77,19 @@ class ProductSet implements \IteratorAggregate, \Countable
     {
         unset($this->array);
         $this->array = array();
+    }
+
+    /**
+     *
+     * @param
+     * @return
+     */
+    public function get($reference)
+    {
+        if(array_key_exists($reference, $this->array)) {
+            return $this->array[$reference];
+        }
+        throw new \OutOfBoundsException('The product with the reference '.$reference.' not exist in the set.');
     }
 
     /**

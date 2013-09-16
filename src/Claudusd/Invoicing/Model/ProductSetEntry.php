@@ -25,9 +25,6 @@ class ProductSetEntry
      */
     public function __construct(ProductInterface $product, $amount)
     {
-        if($amount <= 0 ) {
-            throw new \RangeException('The amount must be superior to 0');
-        }
         $this->product = $product;
         $this->amount = $amount;
     }
